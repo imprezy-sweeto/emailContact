@@ -45,14 +45,13 @@ export default {
       msg.setSender({ name: "Formularz SWEETO", addr: env.FROM });
       msg.setRecipient(env.TO);
       msg.setSubject(clean(d._subject, 200) || "Zapytanie ze strony");
-      if (email) msg.setHeader("Reply-To", email);
+      if (email) msg.setHeader("Reply-To", { addr: email });
       msg.addMessage({ contentType: "text/plain", data: body });
 
       await env.EMAIL.send(new EmailMessage(env.FROM, env.TO, msg.asRaw()));
       return reply(200, "ok");
     } catch (e) {
-       console.error("SEND ERROR:", e && e.message ? e.message : e, e && e.stack);
-      return reply(500, "Błąd wysyłki: " + (e && e.message ? e.message : String(e)));
+      return reply(500, "Błąd wysyłki");
     }
   },
 };
