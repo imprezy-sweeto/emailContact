@@ -51,7 +51,8 @@ export default {
       await env.EMAIL.send(new EmailMessage(env.FROM, env.TO, msg.asRaw()));
       return reply(200, "ok");
     } catch (e) {
-      return reply(500, "Błąd wysyłki");
+       console.error("SEND ERROR:", e && e.message ? e.message : e, e && e.stack);
+      return reply(500, "Błąd wysyłki: " + (e && e.message ? e.message : String(e)));
     }
   },
 };
