@@ -1,0 +1,5 @@
+{
+  "name": "sweeto-form",
+  "private": true,
+  "dependencies": { "mimetext": "^3.0.24" }
+}
