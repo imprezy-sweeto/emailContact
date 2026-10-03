@@ -1,6 +1,7 @@
-name = "sweeto-form"
+name = "emailcontact"
 main = "src/index.js"
 compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
 
 send_email = [
   { name = "EMAIL", destination_address = "imprezysweeto@gmail.com" }
